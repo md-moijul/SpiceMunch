@@ -35,9 +35,10 @@ class MainActivity : AppCompatActivity() {
             viewModel.incrementCount()
         }
 
-
+        //
         val startButton: Button = findViewById(R.id.startButton)
         startButton.setOnClickListener {
+            // Intent to start FoodActivity
             val intent = Intent(this, FoodActivity::class.java)
             intent.putExtra("counter_value", viewModel.count.value ?: 0)
             startActivity(intent)

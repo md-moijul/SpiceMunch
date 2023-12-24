@@ -13,6 +13,9 @@
         android:theme="@style/Theme.SpiceMunch"
         tools:targetApi="31">
         <activity
+            android:name=".activity.ModificationActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.FoodActivity"
             android:exported="false" />
         <activity
