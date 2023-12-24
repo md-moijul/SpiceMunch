@@ -7,23 +7,36 @@
     tools:context=".activity.MainActivity">
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="center"
         android:orientation="vertical"
-        android:gravity="center">
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
 
         <TextView
             android:id="@+id/countTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="24sp"/>
+            android:textSize="24sp" />
 
         <Button
             android:id="@+id/incrementButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Increment"/>
+            android:text="Increment" />
+
     </LinearLayout>
+
+    <Button
+        android:id="@+id/startButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Start"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

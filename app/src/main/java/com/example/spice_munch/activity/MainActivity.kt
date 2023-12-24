@@ -1,5 +1,6 @@
 package com.example.spice_munch.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
@@ -32,6 +33,14 @@ class MainActivity : AppCompatActivity() {
         // Set a click listener on the button to increment the count
         incrementButton.setOnClickListener {
             viewModel.incrementCount()
+        }
+
+
+        val startButton: Button = findViewById(R.id.startButton)
+        startButton.setOnClickListener {
+            val intent = Intent(this, FoodActivity::class.java)
+            intent.putExtra("counter_value", viewModel.count.value ?: 0)
+            startActivity(intent)
         }
     }
 }
