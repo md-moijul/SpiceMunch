@@ -2,4 +2,11 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Define your custom colors here -->
+    <color name="buttonBackground">#FF6200EE</color>
+    <color name="primaryButton">#FF6200EE</color>
+    <color name="secondaryButton">#FF00FFEE</color>
+    <color name="buttonText">#FFFFFFFF</color>
+    <color name="buttonBorder">#FF000000</color>
 </resources>

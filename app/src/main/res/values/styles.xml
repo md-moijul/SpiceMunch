@@ -1,3 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+    </style>
+
+    <!-- Style for RadioButtons to look like regular buttons -->
+    <style name="RadioButtonStyle" parent="Widget.AppCompat.Button">
+        <!-- Background color -->
+        <item name="android:background">@color/primaryButton</item>
+
+        <!-- Text color -->
+        <item name="android:textColor">@color/buttonText</item>
+
+        <!-- Padding -->
+        <item name="android:padding">16dp</item>
+
+        <!-- Text size -->
+        <item name="android:textSize">18sp</item>
+
+        <!-- Border -->
+<!--        <item name="android:backgroundTint">@color/buttonBorder</item>-->
+<!--        <item name="android:backgroundTintMode">src_over</item>-->
+
+        <!-- Optional: Rounded corners -->
+<!--        <item name="android:background">@drawable/rounded_button</item>-->
+    </style>
+
 </resources>

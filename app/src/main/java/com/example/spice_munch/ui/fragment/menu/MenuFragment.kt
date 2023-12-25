@@ -1,4 +1,4 @@
-package com.example.spice_munch.fragment
+package com.example.spice_munch.ui.fragment.menu
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle

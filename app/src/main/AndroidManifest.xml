@@ -13,13 +13,13 @@
         android:theme="@style/Theme.SpiceMunch"
         tools:targetApi="31">
         <activity
-            android:name=".activity.ModificationActivity"
+            android:name=".ui.activity.modification.ModificationActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.FoodActivity"
+            android:name=".ui.activity.foodItems.FoodActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".ui.activity.main.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

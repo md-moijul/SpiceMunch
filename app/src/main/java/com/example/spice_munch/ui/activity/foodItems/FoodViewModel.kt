@@ -1,4 +1,4 @@
-package com.example.spice_munch.viewmodel
+package com.example.spice_munch.ui.activity.foodItems
 
 import androidx.lifecycle.ViewModel
 

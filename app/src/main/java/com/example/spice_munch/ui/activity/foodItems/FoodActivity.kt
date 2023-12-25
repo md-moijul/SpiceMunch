@@ -1,4 +1,4 @@
-package com.example.spice_munch.activity
+package com.example.spice_munch.ui.activity.foodItems
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -9,7 +9,7 @@ import android.widget.ListView
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import com.example.spice_munch.R
-import com.example.spice_munch.viewmodel.FoodViewModel
+import com.example.spice_munch.ui.activity.modification.ModificationActivity
 
 class FoodActivity : AppCompatActivity() {
 

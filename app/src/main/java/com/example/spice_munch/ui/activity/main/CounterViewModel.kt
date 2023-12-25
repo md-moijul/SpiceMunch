@@ -1,9 +1,9 @@
-package com.example.spice_munch.viewmodel
+package com.example.spice_munch.ui.activity.main
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.spice_munch.model.CounterModel
+import com.example.spice_munch.data.model.CounterModel
 
 class CounterViewModel : ViewModel() {
     private val model = CounterModel()

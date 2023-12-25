@@ -1,4 +1,4 @@
-package com.example.spice_munch.activity
+package com.example.spice_munch.ui.activity.main
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,7 +8,7 @@ import androidx.lifecycle.Observer
 import android.widget.TextView
 import android.widget.Button
 import com.example.spice_munch.R
-import com.example.spice_munch.viewmodel.CounterViewModel
+import com.example.spice_munch.ui.activity.foodItems.FoodActivity
 
 class MainActivity : AppCompatActivity() {
 
