@@ -8,6 +8,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.example.spice_munch.R
+import com.example.spice_munch.data.model.OptionModel
 import com.example.spice_munch.ui.activity.foodItems.FoodActivity
 import com.example.spice_munch.ui.activity.main.CounterViewModel
 import com.example.spice_munch.ui.fragment.allergies.AllergiesFragment
@@ -16,15 +17,18 @@ import com.example.spice_munch.ui.fragment.extra.ExtraFragment
 import com.example.spice_munch.ui.fragment.extra.ExtraViewModel
 import com.example.spice_munch.ui.fragment.itemAmount.AmountFragment
 import com.example.spice_munch.ui.fragment.itemAmount.AmountViewModel
+import com.example.spice_munch.ui.fragment.option.OptionFragment
+import com.example.spice_munch.ui.fragment.option.OptionViewModel
 
 class ModificationActivity : AppCompatActivity() {
 
     private val TAG = "ModificationState"
 
-    private lateinit var CounterviewModel: CounterViewModel
+
     private val AmountViewModel: AmountViewModel by viewModels()
     private val AllergiesViewModel: AllergiesViewModel by viewModels()
     private val ExtraViewModel: ExtraViewModel by viewModels()
+    private val OptionViewModel: OptionViewModel by viewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,6 +45,9 @@ class ModificationActivity : AppCompatActivity() {
                 .commit()
             supportFragmentManager.beginTransaction()
                 .add(R.id.ExtraFragment_container, ExtraFragment())
+                .commit()
+            supportFragmentManager.beginTransaction()
+                .add(R.id.OptionFragment_container, OptionFragment())
                 .commit()
         }
 
@@ -75,6 +82,16 @@ class ModificationActivity : AppCompatActivity() {
                     Log.i(TAG, "Extra : $extra")
                 }
             }
+        })
+        // Observe the selected option from ExtraOptionViewModel
+        OptionViewModel.selectedOption.observe(this, Observer { option ->
+            val selected = when (option) {
+                OptionModel.Option.CHICKEN -> "Chicken"
+                OptionModel.Option.LAMB -> "Lamb"
+                OptionModel.Option.PRAWN -> "Prawn"
+                OptionModel.Option.VEGETABLE -> "Vegetable"
+            }
+            Log.i(TAG, "Selected Extra Option: $selected")
         })
 
         val addItemButton: Button = findViewById(R.id.addItemButton)
