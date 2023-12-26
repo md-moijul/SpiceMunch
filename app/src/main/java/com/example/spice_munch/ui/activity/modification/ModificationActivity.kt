@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.example.spice_munch.R
 import com.example.spice_munch.data.model.OptionModel
+import com.example.spice_munch.data.model.SpiceLevelModel
 import com.example.spice_munch.ui.activity.foodItems.FoodActivity
 import com.example.spice_munch.ui.activity.main.CounterViewModel
 import com.example.spice_munch.ui.fragment.allergies.AllergiesFragment
@@ -19,16 +20,19 @@ import com.example.spice_munch.ui.fragment.itemAmount.AmountFragment
 import com.example.spice_munch.ui.fragment.itemAmount.AmountViewModel
 import com.example.spice_munch.ui.fragment.option.OptionFragment
 import com.example.spice_munch.ui.fragment.option.OptionViewModel
+import com.example.spice_munch.ui.fragment.spiceLevel.SpiceLevelFragment
+import com.example.spice_munch.ui.fragment.spiceLevel.SpiceLevelViewModel
 
 class ModificationActivity : AppCompatActivity() {
 
     private val TAG = "ModificationState"
 
-
-    private val AmountViewModel: AmountViewModel by viewModels()
-    private val AllergiesViewModel: AllergiesViewModel by viewModels()
-    private val ExtraViewModel: ExtraViewModel by viewModels()
     private val OptionViewModel: OptionViewModel by viewModels()
+    private val SpiceLevelViewModel: SpiceLevelViewModel by viewModels()
+    private val ExtraViewModel: ExtraViewModel by viewModels()
+    private val AllergiesViewModel: AllergiesViewModel by viewModels()
+    private val AmountViewModel: AmountViewModel by viewModels()
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,20 +42,25 @@ class ModificationActivity : AppCompatActivity() {
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .add(R.id.amountFragment_container, AmountFragment())
-                .commit()
-            supportFragmentManager.beginTransaction()
-                .add(R.id.allergiesFragment_container, AllergiesFragment())
-                .commit()
-            supportFragmentManager.beginTransaction()
-                .add(R.id.ExtraFragment_container, ExtraFragment())
-                .commit()
-            supportFragmentManager.beginTransaction()
+
                 .add(R.id.OptionFragment_container, OptionFragment())
+
+                .add(R.id.SpiceLevelFragment_container, SpiceLevelFragment())
+
+                .add(R.id.ExtraFragment_container, ExtraFragment())
+
+                .add(R.id.allergiesFragment_container, AllergiesFragment())
+
+                .add(R.id.amountFragment_container, AmountFragment())
+
                 .commit()
+
         }
 
         //log current state
+        SpiceLevelViewModel.spiceLevel.observe(this, Observer { spiceLevel ->
+            Log.i(AmountViewModel.currentNumber.toString(), "Current Amount: ${spiceLevel.currentSpiceLevel}")
+        })
         AmountViewModel.currentNumber.observe(this, Observer { number ->
             Log.i(AmountViewModel.currentNumber.toString(), "Current Amount: $number")
         })
@@ -83,7 +92,6 @@ class ModificationActivity : AppCompatActivity() {
                 }
             }
         })
-        // Observe the selected option from ExtraOptionViewModel
         OptionViewModel.selectedOption.observe(this, Observer { option ->
             val selected = when (option) {
                 OptionModel.Option.CHICKEN -> "Chicken"
