@@ -8,6 +8,8 @@ import androidx.lifecycle.Observer
 import com.example.spice_munch.R
 import com.example.spice_munch.ui.fragment.allergies.AllergiesFragment
 import com.example.spice_munch.ui.fragment.allergies.AllergiesViewModel
+import com.example.spice_munch.ui.fragment.extra.ExtraFragment
+import com.example.spice_munch.ui.fragment.extra.ExtraViewModel
 import com.example.spice_munch.ui.fragment.itemAmount.AmountFragment
 import com.example.spice_munch.ui.fragment.itemAmount.AmountViewModel
 
@@ -17,6 +19,7 @@ class ModificationActivity : AppCompatActivity() {
 
     private val AmountViewModel: AmountViewModel by viewModels()
     private val AllergiesViewModel: AllergiesViewModel by viewModels()
+    private val ExtraViewModel: ExtraViewModel by viewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,6 +33,9 @@ class ModificationActivity : AppCompatActivity() {
                 .commit()
             supportFragmentManager.beginTransaction()
                 .add(R.id.allergiesFragment_container, AllergiesFragment())
+                .commit()
+            supportFragmentManager.beginTransaction()
+                .add(R.id.ExtraFragment_container, ExtraFragment())
                 .commit()
         }
 
@@ -48,6 +54,20 @@ class ModificationActivity : AppCompatActivity() {
             allergiesMap.forEach { (allergy, isAllergic) ->
                 if (isAllergic) {
                     Log.i(TAG, "Allergic to $allergy")
+                }
+            }
+        })
+        ExtraViewModel.extras.observe(this, Observer { extras ->
+            val extrasMap = mapOf(
+                "mushroom" to extras.mushroom,
+                "cream" to extras.cream,
+                "coriander" to extras.coriander,
+                "onion" to extras.onion
+            )
+
+            extrasMap.forEach { (extra, isExtra) ->
+                if (isExtra) {
+                    Log.i(TAG, "Extra : $extra")
                 }
             }
         })

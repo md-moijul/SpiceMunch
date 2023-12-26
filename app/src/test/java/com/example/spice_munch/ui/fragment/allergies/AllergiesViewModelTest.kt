@@ -3,12 +3,9 @@ package com.example.spice_munch.ui.fragment.allergies
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.example.spice_munch.data.model.AllergiesModel
-import com.example.spice_munch.ui.fragment.allergies.AllergiesViewModel
-import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import org.mockito.Mockito
 import org.mockito.Mockito.mock
 import org.mockito.Mockito.times
 import org.mockito.Mockito.verify

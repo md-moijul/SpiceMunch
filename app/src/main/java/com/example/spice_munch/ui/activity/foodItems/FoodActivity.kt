@@ -42,11 +42,11 @@ class FoodActivity : AppCompatActivity() {
 
 
 
-        val selectItemButton: Button = findViewById(R.id.selectItemButton)
-        selectItemButton.setOnClickListener {
-            // Intent to start ModificationActivity
-            val intent = Intent(this, ModificationActivity::class.java)
-            startActivity(intent)
-        }
+//        val selectItemButton: Button = findViewById(R.id.selectItemButton)
+//        selectItemButton.setOnClickListener {
+//            // Intent to start ModificationActivity
+//            val intent = Intent(this, ModificationActivity::class.java)
+//            startActivity(intent)
+//        }
     }
 }
