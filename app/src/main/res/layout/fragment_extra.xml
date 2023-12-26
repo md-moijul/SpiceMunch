@@ -34,7 +34,6 @@
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
             style="@style/ExtraButtonStyle"
-            android:color="@color/primaryButton"
             android:text="Mushroom"/>
 
         <Button
