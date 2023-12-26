@@ -1,4 +1,4 @@
-package com.example.spice_munch
+package com.example.spice_munch.ui.fragment.amount
 
 import com.example.spice_munch.data.model.AmountModel
 import org.junit.Assert

@@ -1,4 +1,4 @@
-package com.example.spice_munch
+package com.example.spice_munch.ui.fragment.amount
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer

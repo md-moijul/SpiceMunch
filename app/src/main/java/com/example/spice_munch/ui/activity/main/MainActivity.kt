@@ -3,6 +3,7 @@ package com.example.spice_munch.ui.activity.main
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.Observer
 import android.widget.TextView

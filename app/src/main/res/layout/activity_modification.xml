@@ -94,12 +94,30 @@
 
     </RadioGroup>
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/allergiesFragment_container"
+        app:layout_constraintTop_toBottomOf="@+id/optionsRadioGroup"
+        tools:layout_editor_absoluteX="10dp" />
+
+    <FrameLayout
+        android:id="@+id/allergiesFragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintBottom_toBottomOf="@+id/amountFragment_container"
+
+        />
+
     <FrameLayout
         android:id="@+id/amountFragment_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/optionsRadioGroup" />
+        app:layout_constraintTop_toBottomOf="@+id/allergiesFragment_container" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
