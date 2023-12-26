@@ -27,12 +27,15 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
+            style="@style/ExtraButtonStyle"
+            android:color="@color/primaryButton"
             android:text="Mushroom"/>
 
         <Button
             android:id="@+id/btnCream"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            style="@style/ExtraButtonStyle"
             android:layout_columnWeight="1"
             android:text="Cream"/>
 
@@ -40,6 +43,7 @@
             android:id="@+id/btnCoriander"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            style="@style/ExtraButtonStyle"
             android:layout_columnWeight="1"
             android:text="Coriander"/>
 
@@ -47,6 +51,7 @@
             android:id="@+id/btnOnion"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            style="@style/ExtraButtonStyle"
             android:layout_columnWeight="1"
             android:text="Onion"/>
     </GridLayout>

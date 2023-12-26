@@ -107,16 +107,35 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/ExtraFragment_container"
-        app:layout_constraintBottom_toBottomOf="@+id/amountFragment_container"
+        app:layout_constraintBottom_toBottomOf="@+id/amountFragment_layout"
 
         />
 
-    <FrameLayout
-        android:id="@+id/amountFragment_container"
+
+
+    <LinearLayout
+        android:id="@+id/amountFragment_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/allergiesFragment_container"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/allergiesFragment_container" />
+        tools:ignore="MissingConstraints">
+        <FrameLayout
+            android:id="@+id/amountFragment_container"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginRight="8dp"
+           />
+
+        <Button
+            android:id="@+id/addItemButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Add Item" />
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

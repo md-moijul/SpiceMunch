@@ -1,11 +1,15 @@
 package com.example.spice_munch.ui.activity.modification
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.example.spice_munch.R
+import com.example.spice_munch.ui.activity.foodItems.FoodActivity
+import com.example.spice_munch.ui.activity.main.CounterViewModel
 import com.example.spice_munch.ui.fragment.allergies.AllergiesFragment
 import com.example.spice_munch.ui.fragment.allergies.AllergiesViewModel
 import com.example.spice_munch.ui.fragment.extra.ExtraFragment
@@ -17,6 +21,7 @@ class ModificationActivity : AppCompatActivity() {
 
     private val TAG = "ModificationState"
 
+    private lateinit var CounterviewModel: CounterViewModel
     private val AmountViewModel: AmountViewModel by viewModels()
     private val AllergiesViewModel: AllergiesViewModel by viewModels()
     private val ExtraViewModel: ExtraViewModel by viewModels()
@@ -71,5 +76,14 @@ class ModificationActivity : AppCompatActivity() {
                 }
             }
         })
+
+        val addItemButton: Button = findViewById(R.id.addItemButton)
+        addItemButton.setOnClickListener {
+            // Finish ModificationActivity to return to the previous Activity
+            finish()
+        }
+
+
+
     }
 }

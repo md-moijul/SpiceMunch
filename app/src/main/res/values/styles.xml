@@ -27,4 +27,21 @@
 <!--        <item name="android:background">@drawable/rounded_button</item>-->
     </style>
 
+    <style name="ExtraButtonStyle" parent="Widget.AppCompat.Button">
+        <!-- Background color -->
+        <item name="android:background">@color/secondaryButton</item>
+
+        <!-- Text color -->
+        <item name="android:textColor">@color/buttonText</item>
+
+        <!-- Padding -->
+        <item name="android:padding">16dp</item>
+
+        <!-- margin -->
+        <item name="android:layout_margin">4dp</item>
+
+        <!-- Text size -->
+        <item name="android:textSize">18sp</item>
+    </style>
+
 </resources>
