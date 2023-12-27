@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -39,6 +40,12 @@ class ModificationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_modification)
 
+        // Extract the selected food item from the Intent
+        val selectedFoodItem = intent.getStringExtra("selected_item") ?: "No item selected"
+        // Find the TextView and set the selected food item
+
+        val selectedItemTextView: TextView = findViewById(R.id.selectedItemTextView)
+        selectedItemTextView.text = selectedFoodItem
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()

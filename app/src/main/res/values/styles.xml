@@ -44,4 +44,15 @@
         <item name="android:textSize">18sp</item>
     </style>
 
+    <style name="ButtonSecondary" parent="Widget.AppCompat.Button">
+
+        <!-- Text color -->
+        <item name="android:textColor">@color/buttonText</item>
+
+        <!-- Padding -->
+        <item name="android:padding">16dp</item>
+
+
+    </style>
+
 </resources>
