@@ -1,12 +1,19 @@
 package com.example.spice_munch.ui.activity.main
 
-class TablesViewModel {
-        // private val currentTable = TablesModel()
-
-        private var selectedTable: Int = 0
+import androidx.lifecycle.ViewModel
+import com.example.spice_munch.data.model.TablesModel
 
 
-        fun selectOption(option: Int) {
-            selectedTable = option
-        }
+class TablesViewModel : ViewModel() {
+
+    private val currentTable = TablesModel()
+
+    val tableOptions: Array<String>
+        get() = currentTable.tableOptions
+
+    private var selectedTable: Int = 0
+
+    fun selectOption(option: Int) {
+        selectedTable = option
+    }
 }

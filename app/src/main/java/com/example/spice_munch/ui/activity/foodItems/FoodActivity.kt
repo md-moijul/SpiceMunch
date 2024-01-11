@@ -20,16 +20,17 @@ class FoodActivity : AppCompatActivity() {
 
         viewModel = ViewModelProvider(this).get(FoodViewModel::class.java)
 
-        // Find the TextView and set the counter value from the Intent
+        // Retrieve the table number from the Intent
+        val tableNumber = intent.getIntExtra("table_number", 0)
+
+        // Use the table number as needed
         val counterTextView: TextView = findViewById(R.id.counterTextView)
-        val counterValue = intent.getIntExtra("counter_value", 0)
-        counterTextView.text = "Table number: $counterValue"
+        counterTextView.text = "Table number: $tableNumber"
 
         // Setup the ListView and Adapter
         val listView: ListView = findViewById(R.id.listViewFoodItems)
         val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, viewModel.items)
         listView.adapter = adapter
-
 
         // Set the item click listener
         listView.setOnItemClickListener { _, _, position, _ ->

@@ -9,4 +9,7 @@
     <color name="secondaryButton">#FF00FFEE</color>
     <color name="buttonText">#FFFFFFFF</color>
     <color name="buttonBorder">#FF000000</color>
+    <color name="cream">#f8eddb</color>
+    <color name="teal_700">#FF018786</color>
+    
 </resources>
