@@ -6,7 +6,8 @@ data class OrderItem(
     val extras: List<Extra>,
     val allergies: List<Allergy>,
     val spiceLevel: String,
-    val amount: Double
+    val amount: Double,
+    val price: Double
 )
 
 

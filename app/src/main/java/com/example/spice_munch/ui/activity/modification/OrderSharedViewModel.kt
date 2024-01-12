@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.spice_munch.data.model.Allergy
 import com.example.spice_munch.data.model.Extra
+import com.example.spice_munch.data.model.FoodItem
 import com.example.spice_munch.data.model.Option
 import com.example.spice_munch.data.model.OrderItem
 
@@ -12,27 +13,17 @@ class OrderSharedViewModel : ViewModel() {
 
     private val _orderItem = MutableLiveData<OrderItem>()
     val orderItem: LiveData<OrderItem> = _orderItem
-//
-//    private val _selectedOption = MutableLiveData<Option>()
-//    val selectedOption: LiveData<Option> = _selectedOption
 
-//    private val _extras = MutableLiveData<List<Extra>>(emptyList())
-//    val extras: LiveData<List<Extra>> = _extras
-
-//
-//    init {
-//        _selectedOption.value = Option.CHICKEN // Default option
-//    }
-
-    // Initialize with default values
-    init {
+    fun initializeOrderItemWithSelectedFoodItem(selectedFoodItem: FoodItem) {
+        // Initialize the OrderItem with the details from selectedFoodItem
         _orderItem.value = OrderItem(
-            name = "Default Item",
+            name = selectedFoodItem.name,
             option = Option.CHICKEN,
             extras = listOf(),
             allergies = listOf(),
             spiceLevel = "Mild",
-            amount = 1.0
+            amount = 1.0,
+            price = selectedFoodItem.price
         )
     }
 

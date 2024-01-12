@@ -14,15 +14,16 @@ class OrderViewModel : ViewModel() {
     private val _orderItem = MutableLiveData<OrderItem>()
     val orderItem: LiveData<OrderItem> = _orderItem
 
-    init {
-        // Initialize with default values
+    fun initializeOrderItemWithSelectedFoodItem(selectedFoodItem: FoodItem) {
+        // Initialize the OrderItem with the details from selectedFoodItem
         _orderItem.value = OrderItem(
-            name = "Default Item",
-            option = Option.CHICKEN,
+            name = selectedFoodItem.name,
+            option = Option.CHICKEN, // Assuming default option
             extras = listOf(),
             allergies = listOf(),
-            spiceLevel = "Mild",
-            amount = 1.0
+            spiceLevel = "Mild", // Assuming default spice level
+            amount = 1.0, // Assuming default amount
+            price = selectedFoodItem.price // Set price from selectedFoodItem
         )
     }
 

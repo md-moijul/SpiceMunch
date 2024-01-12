@@ -2,7 +2,6 @@ package com.example.spice_munch.ui.fragment.amount
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
-import com.example.spice_munch.ui.fragment.itemAmount.AmountViewModel
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Rule
