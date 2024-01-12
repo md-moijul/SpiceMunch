@@ -1,19 +1,15 @@
 package com.example.spice_munch.ui.activity.modification
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
-import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.example.spice_munch.R
 import com.example.spice_munch.data.model.FoodItem
 import com.example.spice_munch.data.model.OptionModel
-import com.example.spice_munch.data.model.SpiceLevelModel
-import com.example.spice_munch.ui.activity.foodItems.FoodActivity
-import com.example.spice_munch.ui.activity.main.CounterViewModel
+import com.example.spice_munch.databinding.ActivityModificationBinding
 import com.example.spice_munch.ui.fragment.allergies.AllergiesFragment
 import com.example.spice_munch.ui.fragment.allergies.AllergiesViewModel
 import com.example.spice_munch.ui.fragment.extra.ExtraFragment
@@ -34,20 +30,25 @@ class ModificationActivity : AppCompatActivity() {
     private val AllergiesViewModel: AllergiesViewModel by viewModels()
     private val AmountViewModel: AmountViewModel by viewModels()
 
+    private lateinit var binding: ActivityModificationBinding
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_modification)
 
+        binding = ActivityModificationBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
         // Extract the selected food item from the Intent
 //        val selectedFoodItem = intent.getStringExtra("selected_item") ?: "No item selected"
         // Find the TextView and set the selected food item
+        // Extract the selected food item from the Intent
         val selectedFoodItem = intent.getSerializableExtra("selected_item") as FoodItem
 
-
-        val selectedItemTextView: TextView = findViewById(R.id.selectedItemTextView)
-        selectedItemTextView.text = selectedFoodItem.name
+        // Use binding to set the text
+        binding.selectedItemTextView.text = selectedFoodItem.name
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
@@ -63,7 +64,6 @@ class ModificationActivity : AppCompatActivity() {
                 .add(R.id.amountFragment_container, AmountFragment())
 
                 .commit()
-
         }
 
         //log current state
@@ -111,9 +111,8 @@ class ModificationActivity : AppCompatActivity() {
             Log.i(TAG, "Selected Extra Option: $selected")
         })
 
-        val addItemButton: Button = findViewById(R.id.addItemButton)
-        addItemButton.setOnClickListener {
-            // Finish ModificationActivity to return to the previous Activity
+        // Use binding for all view references
+        binding.addItemButton.setOnClickListener {
             finish()
         }
 

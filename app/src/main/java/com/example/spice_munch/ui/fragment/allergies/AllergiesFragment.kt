@@ -1,49 +1,49 @@
 package com.example.spice_munch.ui.fragment.allergies
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
-import com.example.spice_munch.R
-import com.example.spice_munch.ui.fragment.itemAmount.AmountViewModel
+import com.example.spice_munch.databinding.FragmentAllergiesBinding
 
 class AllergiesFragment : Fragment() {
 
     private val viewModel: AllergiesViewModel by activityViewModels()
+    private var _binding: FragmentAllergiesBinding? = null
+
+    // This property is only valid between onCreateView and onDestroyView.
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_allergies, container, false)
+    ): View {
+        _binding = FragmentAllergiesBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val btnNuts: Button = view.findViewById(R.id.btnNuts)
-        val btnDairy: Button = view.findViewById(R.id.btnDairy)
-        val btnSeaFoods: Button = view.findViewById(R.id.btnSeaFoods)
-        val btnWheat: Button = view.findViewById(R.id.btnWheat)
-
         // Observe the LiveData from the ViewModel
         viewModel.allergies.observe(viewLifecycleOwner) { allergies ->
-            btnNuts.isSelected = allergies.nuts
-            btnDairy.isSelected = allergies.dairy
-            btnSeaFoods.isSelected = allergies.seaFoods
-            btnWheat.isSelected = allergies.wheat
+            binding.btnNuts.isSelected = allergies.nuts
+            binding.btnDairy.isSelected = allergies.dairy
+            binding.btnSeaFoods.isSelected = allergies.seaFoods
+            binding.btnWheat.isSelected = allergies.wheat
         }
 
         // Set up button click listeners
-        btnNuts.setOnClickListener { viewModel.toggleNutsAllergy() }
-        btnDairy.setOnClickListener { viewModel.toggleDairyAllergy() }
-        btnSeaFoods.setOnClickListener { viewModel.toggleSeaFoodsAllergy() }
-        btnWheat.setOnClickListener { viewModel.toggleWheatAllergy() }
+        binding.btnNuts.setOnClickListener { viewModel.toggleNutsAllergy() }
+        binding.btnDairy.setOnClickListener { viewModel.toggleDairyAllergy() }
+        binding.btnSeaFoods.setOnClickListener { viewModel.toggleSeaFoodsAllergy() }
+        binding.btnWheat.setOnClickListener { viewModel.toggleWheatAllergy() }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

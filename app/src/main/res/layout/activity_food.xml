@@ -5,7 +5,7 @@
     android:padding="16dp">
 
     <TextView
-        android:id="@+id/counterTextView"
+        android:id="@+id/TableNumberTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Table number: "
@@ -17,7 +17,7 @@
         android:id="@+id/listViewFoodItems"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/counterTextView"
+        android:layout_below="@id/TableNumberTextView"
         android:layout_marginTop="20dp" />
 
 </RelativeLayout>
