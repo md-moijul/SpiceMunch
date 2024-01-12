@@ -28,7 +28,7 @@ class FoodActivity : AppCompatActivity() {
 
         // Setup the ListView and Adapter
         val listView: ListView = findViewById(R.id.listViewFoodItems)
-        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, viewModel.items.map { it.name })
+        val adapter = FoodItemAdapter(viewModel.items)
         listView.adapter = adapter
 
         // Set the item click listener
