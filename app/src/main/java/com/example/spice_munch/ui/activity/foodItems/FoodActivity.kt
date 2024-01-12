@@ -32,12 +32,13 @@ class FoodActivity : AppCompatActivity() {
         listView.adapter = adapter
 
         // Set the item click listener
-//        listView.setOnItemClickListener { _, _, position, _ ->
-//            val selectedFoodItem = viewModel.items[position]
-//            val intent = Intent(this, ModificationActivity::class.java).apply {
-//                putExtra("selected_item", selectedFoodItem)
-//            }
-//            startActivity(intent)
-//        }
+        listView.setOnItemClickListener { _, _, position, _ ->
+            val selectedFoodItem = viewModel.items[position]
+            val intent = Intent(this, ModificationActivity::class.java).apply {
+                // Pass the selected FoodItem to the ModificationActivity
+                putExtra("selected_item", selectedFoodItem)
+            }
+            startActivity(intent)
+        }
     }
 }

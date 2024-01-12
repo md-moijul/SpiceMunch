@@ -9,6 +9,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.example.spice_munch.R
+import com.example.spice_munch.data.model.FoodItem
 import com.example.spice_munch.data.model.OptionModel
 import com.example.spice_munch.data.model.SpiceLevelModel
 import com.example.spice_munch.ui.activity.foodItems.FoodActivity
@@ -27,7 +28,6 @@ import com.example.spice_munch.ui.fragment.spiceLevel.SpiceLevelViewModel
 class ModificationActivity : AppCompatActivity() {
 
     private val TAG = "ModificationState"
-
     private val OptionViewModel: OptionViewModel by viewModels()
     private val SpiceLevelViewModel: SpiceLevelViewModel by viewModels()
     private val ExtraViewModel: ExtraViewModel by viewModels()
@@ -41,11 +41,13 @@ class ModificationActivity : AppCompatActivity() {
         setContentView(R.layout.activity_modification)
 
         // Extract the selected food item from the Intent
-        val selectedFoodItem = intent.getStringExtra("selected_item") ?: "No item selected"
+//        val selectedFoodItem = intent.getStringExtra("selected_item") ?: "No item selected"
         // Find the TextView and set the selected food item
+        val selectedFoodItem = intent.getSerializableExtra("selected_item") as FoodItem
+
 
         val selectedItemTextView: TextView = findViewById(R.id.selectedItemTextView)
-        selectedItemTextView.text = selectedFoodItem
+        selectedItemTextView.text = selectedFoodItem.name
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
