@@ -6,25 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".ui.activity.foodItems.FoodActivity">
 
-
-    <LinearLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewFoodItems"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-        <TextView
-            android:id="@+id/counterTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:textSize="24sp"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
+        android:layout_margin="8dp"/>
 
-        <ListView
-            android:id="@+id/listViewFoodItems"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            tools:ignore="MissingConstraints"/>
-    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
