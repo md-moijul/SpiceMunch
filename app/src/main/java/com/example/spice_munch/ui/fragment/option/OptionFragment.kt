@@ -1,23 +1,21 @@
 package com.example.spice_munch.ui.fragment.option
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import com.example.spice_munch.R
-import com.example.spice_munch.data.model.OptionModel
+import com.example.spice_munch.data.model.Option
 import com.example.spice_munch.databinding.FragmentOptionBinding
+import com.example.spice_munch.ui.activity.modification.OrderSharedViewModel
 
 class OptionFragment : Fragment() {
 
-    private val viewModel: OptionViewModel by activityViewModels()
+    private val sharedViewModel: OrderSharedViewModel by activityViewModels()
     private var _binding: FragmentOptionBinding? = null
-
-    // This property is only valid between onCreateView and onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -31,19 +29,29 @@ class OptionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.selectedOption.observe(viewLifecycleOwner) { selectedOption ->
-            // Update buttons' selected state
-            binding.buttonChicken.isSelected = selectedOption == OptionModel.Option.CHICKEN
-            binding.buttonLamb.isSelected = selectedOption == OptionModel.Option.LAMB
-            binding.buttonPrawn.isSelected = selectedOption == OptionModel.Option.PRAWN
-            binding.buttonVegetable.isSelected = selectedOption == OptionModel.Option.VEGETABLE
+        sharedViewModel.orderItem.observe(viewLifecycleOwner) { orderItem ->
+            resetButtonColors()
+
+            when (orderItem.option) {
+                Option.CHICKEN -> binding.buttonChicken.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.secondaryButton))
+                Option.LAMB -> binding.buttonLamb.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.secondaryButton))
+                Option.PRAWN -> binding.buttonPrawn.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.secondaryButton))
+                Option.VEGETABLE -> binding.buttonVegetable.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.secondaryButton))
+            }
         }
 
-        // Set click listeners for buttons
-        binding.buttonChicken.setOnClickListener { viewModel.selectOption(OptionModel.Option.CHICKEN) }
-        binding.buttonLamb.setOnClickListener { viewModel.selectOption(OptionModel.Option.LAMB) }
-        binding.buttonPrawn.setOnClickListener { viewModel.selectOption(OptionModel.Option.PRAWN) }
-        binding.buttonVegetable.setOnClickListener { viewModel.selectOption(OptionModel.Option.VEGETABLE) }
+        binding.buttonChicken.setOnClickListener { sharedViewModel.selectOption(Option.CHICKEN) }
+        binding.buttonLamb.setOnClickListener { sharedViewModel.selectOption(Option.LAMB) }
+        binding.buttonPrawn.setOnClickListener { sharedViewModel.selectOption(Option.PRAWN) }
+        binding.buttonVegetable.setOnClickListener { sharedViewModel.selectOption(Option.VEGETABLE) }
+    }
+
+    private fun resetButtonColors() {
+        val defaultColor = ContextCompat.getColor(requireContext(), R.color.primaryButton)
+        binding.buttonChicken.setBackgroundColor(defaultColor)
+        binding.buttonLamb.setBackgroundColor(defaultColor)
+        binding.buttonPrawn.setBackgroundColor(defaultColor)
+        binding.buttonVegetable.setBackgroundColor(defaultColor)
     }
 
     override fun onDestroyView() {
@@ -51,3 +59,4 @@ class OptionFragment : Fragment() {
         _binding = null
     }
 }
+

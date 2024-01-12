@@ -5,15 +5,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
+import com.example.spice_munch.R
+import com.example.spice_munch.data.model.Allergy
 import com.example.spice_munch.databinding.FragmentAllergiesBinding
+import com.example.spice_munch.ui.activity.modification.OrderSharedViewModel
 
 class AllergiesFragment : Fragment() {
 
-    private val viewModel: AllergiesViewModel by activityViewModels()
+    private val sharedViewModel: OrderSharedViewModel by activityViewModels()
     private var _binding: FragmentAllergiesBinding? = null
-
-    // This property is only valid between onCreateView and onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -27,19 +30,42 @@ class AllergiesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Observe the LiveData from the ViewModel
-        viewModel.allergies.observe(viewLifecycleOwner) { allergies ->
-            binding.btnNuts.isSelected = allergies.nuts
-            binding.btnDairy.isSelected = allergies.dairy
-            binding.btnSeaFoods.isSelected = allergies.seaFoods
-            binding.btnWheat.isSelected = allergies.wheat
+        sharedViewModel.orderItem.observe(viewLifecycleOwner) { orderItem ->
+            updateButtonColor(binding.btnNuts, orderItem.allergies.contains(Allergy.NUTS))
+            updateButtonColor(binding.btnDairy, orderItem.allergies.contains(Allergy.DAIRY))
+            updateButtonColor(binding.btnSeaFoods, orderItem.allergies.contains(Allergy.SEAFOODS))
+            updateButtonColor(binding.btnWheat, orderItem.allergies.contains(Allergy.WHEAT))
         }
 
-        // Set up button click listeners
-        binding.btnNuts.setOnClickListener { viewModel.toggleNutsAllergy() }
-        binding.btnDairy.setOnClickListener { viewModel.toggleDairyAllergy() }
-        binding.btnSeaFoods.setOnClickListener { viewModel.toggleSeaFoodsAllergy() }
-        binding.btnWheat.setOnClickListener { viewModel.toggleWheatAllergy() }
+        binding.btnNuts.setOnClickListener {
+            sharedViewModel.toggleAllergy(Allergy.NUTS)
+            toggleButtonColor(binding.btnNuts)
+        }
+        binding.btnDairy.setOnClickListener {
+            sharedViewModel.toggleAllergy(Allergy.DAIRY)
+            toggleButtonColor(binding.btnDairy)
+        }
+        binding.btnSeaFoods.setOnClickListener {
+            sharedViewModel.toggleAllergy(Allergy.SEAFOODS)
+            toggleButtonColor(binding.btnSeaFoods)
+        }
+        binding.btnWheat.setOnClickListener {
+            sharedViewModel.toggleAllergy(Allergy.WHEAT)
+            toggleButtonColor(binding.btnWheat)
+        }
+    }
+
+    private fun updateButtonColor(button: Button, isSelected: Boolean) {
+        if (isSelected) {
+            button.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.primaryButton))
+        } else {
+            button.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.secondaryButton))
+        }
+    }
+
+    private fun toggleButtonColor(button: Button) {
+        button.isSelected = !button.isSelected
+        updateButtonColor(button, button.isSelected)
     }
 
     override fun onDestroyView() {

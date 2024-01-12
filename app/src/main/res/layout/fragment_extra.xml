@@ -29,37 +29,38 @@
         android:alignmentMode="alignMargins"
         android:columnOrderPreserved="false">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnMushroom"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
-            style="@style/ExtraButtonStyle"
-            android:text="Mushroom"/>
+            android:text="Mushroom"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnCream"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            style="@style/ExtraButtonStyle"
             android:layout_columnWeight="1"
-            android:text="Cream"/>
+            android:text="Cream"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnCoriander"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            style="@style/ExtraButtonStyle"
             android:layout_columnWeight="1"
-            android:text="Coriander"/>
+            android:text="Coriander"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnOnion"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            style="@style/ExtraButtonStyle"
             android:layout_columnWeight="1"
-            android:text="Onion"/>
+            android:text="Onion"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+
     </GridLayout>
 </LinearLayout>
 

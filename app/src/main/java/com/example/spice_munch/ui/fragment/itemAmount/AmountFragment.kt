@@ -11,13 +11,12 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import com.example.spice_munch.R
 import com.example.spice_munch.databinding.FragmentAmountBinding
+import com.example.spice_munch.ui.activity.modification.OrderSharedViewModel
 
 class AmountFragment : Fragment() {
 
-    private val viewModel: AmountViewModel by activityViewModels()
+    private val sharedViewModel: OrderSharedViewModel by activityViewModels()
     private var _binding: FragmentAmountBinding? = null
-
-    // This property is only valid between onCreateView and onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -31,17 +30,17 @@ class AmountFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.currentNumber.observe(viewLifecycleOwner, Observer { number ->
-            binding.txtNumber.text = number.toString().padStart(2, '0')
-            binding.btnDecrease.isEnabled = number > 1
-        })
+        sharedViewModel.orderItem.observe(viewLifecycleOwner) { orderItem ->
+            binding.txtNumber.text = orderItem.amount.toInt().toString().padStart(2, '0')
+            binding.btnDecrease.isEnabled = orderItem.amount > 1
+        }
 
         binding.btnIncrease.setOnClickListener {
-            viewModel.increaseNumber()
+            sharedViewModel.increaseAmount()
         }
 
         binding.btnDecrease.setOnClickListener {
-            viewModel.decreaseNumber()
+            sharedViewModel.decreaseAmount()
         }
     }
 

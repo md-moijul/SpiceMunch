@@ -19,40 +19,64 @@
             android:layout_height="wrap_content"
             android:columnCount="2"
             android:rowCount="2"
+
             android:alignmentMode="alignMargins"
             android:columnOrderPreserved="false">
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonChicken"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                style="@style/ExtraButtonStyle"
-                android:text="Chicken"/>
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:padding="16dp"
+                android:layout_margin="4dp"
+                android:text="Chicken"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonLamb"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                style="@style/ExtraButtonStyle"
                 android:layout_columnWeight="1"
-                android:text="Lamb"/>
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:padding="16dp"
+                android:layout_margin="4dp"
+                android:text="Lamb"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonPrawn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                style="@style/ExtraButtonStyle"
                 android:layout_columnWeight="1"
-                android:text="Vegetable"/>
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:padding="16dp"
+                android:layout_margin="4dp"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:text="Prawn"
+                />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonVegetable"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                style="@style/ExtraButtonStyle"
                 android:layout_columnWeight="1"
-                android:text="Vegetable"/>
+                android:textColor="@color/white"
+
+                android:padding="16dp"
+                android:layout_margin="4dp"
+                android:textStyle="bold"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:text="Vegetable"
+                 />
+
+
         </GridLayout>
     </LinearLayout>
 

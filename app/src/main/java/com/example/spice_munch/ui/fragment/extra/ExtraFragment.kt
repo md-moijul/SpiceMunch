@@ -6,16 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import com.example.spice_munch.R
+import com.example.spice_munch.data.model.Extra
 import com.example.spice_munch.databinding.FragmentExtraBinding
+import com.example.spice_munch.ui.activity.modification.OrderSharedViewModel
 
 class ExtraFragment : Fragment() {
 
-    private val viewModel: ExtraViewModel by activityViewModels()
+    private val sharedViewModel: OrderSharedViewModel by activityViewModels()
     private var _binding: FragmentExtraBinding? = null
-
-    // This property is only valid between onCreateView and onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -29,18 +30,25 @@ class ExtraFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Observe the LiveData from the ViewModel
-        viewModel.extras.observe(viewLifecycleOwner) { extras ->
-            binding.btnMushroom.isSelected = extras.mushroom
-            binding.btnCream.isSelected = extras.cream
-            binding.btnCoriander.isSelected = extras.coriander
-            binding.btnOnion.isSelected = extras.onion
+        sharedViewModel.orderItem.observe(viewLifecycleOwner) { orderItem ->
+            updateButtonState(binding.btnMushroom, orderItem.extras.contains(Extra.MUSHROOM))
+            updateButtonState(binding.btnCream, orderItem.extras.contains(Extra.CREAM))
+            updateButtonState(binding.btnCoriander, orderItem.extras.contains(Extra.CORIANDER))
+            updateButtonState(binding.btnOnion, orderItem.extras.contains(Extra.ONION))
         }
 
-        binding.btnMushroom.setOnClickListener { viewModel.toggleMushroom() }
-        binding.btnCream.setOnClickListener { viewModel.toggleCream() }
-        binding.btnCoriander.setOnClickListener { viewModel.toggleCoriander() }
-        binding.btnOnion.setOnClickListener { viewModel.toggleOnion() }
+        binding.btnMushroom.setOnClickListener { sharedViewModel.toggleExtra(Extra.MUSHROOM) }
+        binding.btnCream.setOnClickListener { sharedViewModel.toggleExtra(Extra.CREAM) }
+        binding.btnCoriander.setOnClickListener { sharedViewModel.toggleExtra(Extra.CORIANDER) }
+        binding.btnOnion.setOnClickListener { sharedViewModel.toggleExtra(Extra.ONION) }
+    }
+
+    private fun updateButtonState(button: Button, isSelected: Boolean) {
+        if (isSelected) {
+            button.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.primaryButton))
+        } else {
+            button.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.secondaryButton))
+        }
     }
 
     override fun onDestroyView() {
@@ -48,3 +56,4 @@ class ExtraFragment : Fragment() {
         _binding = null
     }
 }
+

@@ -5,11 +5,14 @@
 
     <!-- Define your custom colors here -->
     <color name="buttonBackground">#FF6200EE</color>
-    <color name="primaryButton">#FF6200EE</color>
+    <color name="primaryButton">#0000FF</color>
     <color name="secondaryButton">#FF00FFEE</color>
     <color name="buttonText">#FFFFFFFF</color>
     <color name="buttonBorder">#FF000000</color>
     <color name="cream">#f8eddb</color>
     <color name="teal_700">#FF018786</color>
+
+    <color name="colorPrimary">#FF5722</color> <!-- Example default color -->
+    <color name="colorPrimaryDark">#E64A19</color> <!-- Example pressed color -->
     
 </resources>

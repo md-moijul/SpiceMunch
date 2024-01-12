@@ -27,29 +27,30 @@
         android:orientation="horizontal"
         android:gravity="center">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnNuts"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nuts"/>
+            android:text="Nuts" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnDairy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Dairy"/>
+            android:text="Dairy" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSeaFoods"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="SeaFoods"/>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnWheat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Wheat"/>
+
     </LinearLayout>
 </LinearLayout>
     </FrameLayout>

@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-    </style>
+<!--    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">-->
+<!--        &lt;!&ndash; Customize your theme here. &ndash;&gt;-->
+<!--    </style>-->
 
     <!-- Style for RadioButtons to look like regular buttons -->
     <style name="RadioButtonStyle" parent="Widget.AppCompat.Button">
         <!-- Background color -->
-        <item name="android:background">@color/primaryButton</item>
 
         <!-- Text color -->
         <item name="android:textColor">@color/buttonText</item>
@@ -28,8 +27,6 @@
     </style>
 
     <style name="ExtraButtonStyle" parent="Widget.AppCompat.Button">
-        <!-- Background color -->
-        <item name="android:background">@color/secondaryButton</item>
 
         <!-- Text color -->
         <item name="android:textColor">@color/buttonText</item>
@@ -54,5 +51,14 @@
 
 
     </style>
+
+    <style name="PrimaryButtonStyle" parent="Widget.MaterialComponents.Button">
+        <item name="android:background">@drawable/primary_button_background</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:padding">16dp</item>
+        <!-- Define other properties as needed -->
+    </style>
+
 
 </resources>
