@@ -14,6 +14,7 @@ import com.example.spice_munch.ui.activity.modification.ModificationActivity
 class FoodActivity : AppCompatActivity() {
 
     private lateinit var viewModel: FoodViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_food)
@@ -27,25 +28,15 @@ class FoodActivity : AppCompatActivity() {
 
         // Setup the ListView and Adapter
         val listView: ListView = findViewById(R.id.listViewFoodItems)
-        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, viewModel.items)
+        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, viewModel.items.map { it.name })
         listView.adapter = adapter
 
-
         // Set the item click listener
-        listView.setOnItemClickListener { _, _, position, _ ->
-            val selectedFoodItem = viewModel.items[position]
-            val intent = Intent(this, ModificationActivity::class.java).apply {
-                putExtra("selected_item", selectedFoodItem)
-            }
-            startActivity(intent)
-        }
-
-
-
-//        val selectItemButton: Button = findViewById(R.id.selectItemButton)
-//        selectItemButton.setOnClickListener {
-//            // Intent to start ModificationActivity
-//            val intent = Intent(this, ModificationActivity::class.java)
+//        listView.setOnItemClickListener { _, _, position, _ ->
+//            val selectedFoodItem = viewModel.items[position]
+//            val intent = Intent(this, ModificationActivity::class.java).apply {
+//                putExtra("selected_item", selectedFoodItem)
+//            }
 //            startActivity(intent)
 //        }
     }
