@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.example.spice_munch.R
 import com.example.spice_munch.data.model.FoodItem
 import com.example.spice_munch.data.model.OrderItem
@@ -40,6 +41,10 @@ class ModificationActivity : AppCompatActivity() {
                 binding.selectedItemTextView.text = it.name
             }
         }
+
+        val buttonColor = ContextCompat.getColor(this, R.color.colorSeconday)
+        binding.addItemButton.setBackgroundColor(buttonColor)
+
 
         setupFragments()
         setupAddItemButton()

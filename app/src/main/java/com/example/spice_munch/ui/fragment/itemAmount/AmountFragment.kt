@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import com.example.spice_munch.R
@@ -42,7 +43,12 @@ class AmountFragment : Fragment() {
         binding.btnDecrease.setOnClickListener {
             sharedViewModel.decreaseAmount()
         }
+        val backgroundColor = ContextCompat.getColor(requireContext(), R.color.colorSeconday)
+        binding.btnIncrease.setBackgroundColor(backgroundColor)
+        binding.btnDecrease.setBackgroundColor(backgroundColor)
     }
+
+
 
     override fun onDestroyView() {
         super.onDestroyView()

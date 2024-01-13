@@ -13,7 +13,7 @@
         android:background="@color/colorPrimary"
         android:textStyle="bold"
         android:textColor="@color/white"
-        android:paddingVertical="32dp"
+        android:paddingVertical="24dp"
         android:paddingLeft="16dp"
         android:text="Order Summary"
         android:textSize="24sp"
