@@ -6,28 +6,42 @@
     android:id="@+id/spiceLevelFragmentContainer"
     tools:context=".ui.fragment.spiceLevel.SpiceLevelFragment">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="16dp"
-        android:gravity="center_vertical">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textViewSpiceLevel"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Mild" />
+            android:layout_gravity="center_horizontal"
+            android:text="Spice Level"
+            android:textSize="24sp" />
 
-        <SeekBar
-            android:id="@+id/seekBarSpiceLevel"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="4"
-            android:max="100"/>
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/textViewSpiceLevel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Mild" />
+
+            <SeekBar
+                android:id="@+id/seekBarSpiceLevel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:max="100" />
 
 
+        </LinearLayout>
     </LinearLayout>
 
 </FrameLayout>
