@@ -33,10 +33,10 @@ class OptionFragment : Fragment() {
             resetButtonColors()
 
             when (orderItem.option) {
-                Option.CHICKEN -> binding.buttonChicken.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.secondaryButton))
-                Option.LAMB -> binding.buttonLamb.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.secondaryButton))
-                Option.PRAWN -> binding.buttonPrawn.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.secondaryButton))
-                Option.VEGETABLE -> binding.buttonVegetable.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.secondaryButton))
+                Option.CHICKEN -> binding.buttonChicken.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.colorSeconday))
+                Option.LAMB -> binding.buttonLamb.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.colorSeconday))
+                Option.PRAWN -> binding.buttonPrawn.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.colorSeconday))
+                Option.VEGETABLE -> binding.buttonVegetable.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.colorSeconday))
             }
         }
 
@@ -47,7 +47,7 @@ class OptionFragment : Fragment() {
     }
 
     private fun resetButtonColors() {
-        val defaultColor = ContextCompat.getColor(requireContext(), R.color.primaryButton)
+        val defaultColor = ContextCompat.getColor(requireContext(), R.color.colorPrimary)
         binding.buttonChicken.setBackgroundColor(defaultColor)
         binding.buttonLamb.setBackgroundColor(defaultColor)
         binding.buttonPrawn.setBackgroundColor(defaultColor)

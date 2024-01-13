@@ -10,6 +10,7 @@ import android.widget.ListView
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import com.example.spice_munch.R
+import com.example.spice_munch.data.model.FoodItem
 import com.example.spice_munch.databinding.ActivityFoodBinding
 import com.example.spice_munch.ui.activity.modification.ModificationActivity
 import com.example.spice_munch.ui.activity.summary.SummaryActivity
@@ -21,36 +22,35 @@ class FoodActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // Initialize View Binding
         binding = ActivityFoodBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         viewModel = ViewModelProvider(this).get(FoodViewModel::class.java)
 
-        // Retrieve the table number from the Intent
         val tableNumber = intent.getIntExtra("table_number", 0)
-        binding.TableNumberTextView.text = "Table number: $tableNumber"
+        binding.tableNumberTextView.text = "Table number: $tableNumber"
 
-        // Setup the ListView and Adapter
-        val adapter = FoodItemAdapter(viewModel.items)
-        binding.listViewFoodItems.adapter = adapter
+        setupListView(binding.listViewMainDishes, viewModel.itemsMains)
+        setupListView(binding.listViewSides, viewModel.itemsSides)
+        setupListView(binding.listViewStarters, viewModel.itemsStarters)
+        setupListView(binding.listViewRice, viewModel.itemsRice)
+        setupListView(binding.listViewBread, viewModel.itemsBread)
 
-        // Set the item click listener
-        binding.listViewFoodItems.setOnItemClickListener { _, _, position, _ ->
-            val selectedFoodItem = viewModel.items[position]
+        binding.viewSummaryButton.setOnClickListener {
+            startActivity(Intent(this, SummaryActivity::class.java))
+        }
+    }
+
+    private fun setupListView(listView: ListView, items: List<FoodItem>) {
+        val adapter = FoodItemAdapter(items)
+        listView.adapter = adapter
+        listView.setOnItemClickListener { _, _, position, _ ->
+            val selectedFoodItem = items[position]
             val intent = Intent(this, ModificationActivity::class.java).apply {
-                // Pass the selected FoodItem to the ModificationActivity
                 putExtra("selected_item", selectedFoodItem)
             }
             startActivity(intent)
         }
-
-
-        val viewSummaryButton = findViewById<Button>(R.id.viewSummeryButton)
-        viewSummaryButton.setOnClickListener {
-            val intent = Intent(this, SummaryActivity::class.java)
-            startActivity(intent)
-        }
     }
 }
+

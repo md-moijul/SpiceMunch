@@ -45,9 +45,9 @@ class ExtraFragment : Fragment() {
 
     private fun updateButtonState(button: Button, isSelected: Boolean) {
         if (isSelected) {
-            button.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.primaryButton))
+            button.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.colorPrimaryLight))
         } else {
-            button.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.secondaryButton))
+            button.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.white))
         }
     }
 

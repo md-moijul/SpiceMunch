@@ -57,9 +57,9 @@ class AllergiesFragment : Fragment() {
 
     private fun updateButtonColor(button: Button, isSelected: Boolean) {
         if (isSelected) {
-            button.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.primaryButton))
+            button.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.colorSeconday))
         } else {
-            button.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.secondaryButton))
+            button.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.colorPrimary))
         }
     }
 

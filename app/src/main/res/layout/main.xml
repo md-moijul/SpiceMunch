@@ -10,18 +10,17 @@
     <View
         android:id="@+id/bg_card"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/round_style"
-        android:backgroundTint="@color/cream"
+        android:layout_height="503dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="85dp"
         android:layout_marginEnd="12dp"
         android:layout_marginBottom="120dp"
+        android:background="@drawable/round_style"
+        android:backgroundTint="@color/cream"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/headertext"
@@ -35,7 +34,7 @@
         android:paddingBottom="22dp"
         android:paddingLeft="32dp"
         android:paddingRight="14dp"
-        android:background="@color/teal_700"
+        android:background="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -94,13 +93,13 @@
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="18dp"
         android:background="@drawable/continue_button"
-        android:backgroundTint="@color/teal_700"
+        android:backgroundTint="@color/colorPrimary"
+        android:elevation="16dp"
         android:text="Continue"
         android:textColor="@color/white"
         android:textSize="20dp"
-        android:elevation="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
