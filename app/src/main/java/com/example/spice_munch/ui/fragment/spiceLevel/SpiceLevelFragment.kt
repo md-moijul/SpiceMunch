@@ -1,17 +1,12 @@
 package com.example.spice_munch.ui.fragment.spiceLevel
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
-import android.widget.TextView
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
-import com.example.spice_munch.R
-import com.example.spice_munch.data.model.SpiceLevelModel
 import com.example.spice_munch.databinding.FragmentSpiceLevelBinding
 import com.example.spice_munch.ui.activity.modification.OrderSharedViewModel
 

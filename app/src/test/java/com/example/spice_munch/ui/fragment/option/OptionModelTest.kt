@@ -1,6 +1,5 @@
 package com.example.spice_munch.ui.fragment.option
 
-import com.example.spice_munch.data.model.OptionModel
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test

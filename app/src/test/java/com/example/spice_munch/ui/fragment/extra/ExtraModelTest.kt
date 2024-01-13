@@ -1,6 +1,5 @@
 package com.example.spice_munch.ui.fragment.extra
 
-import com.example.spice_munch.data.model.ExtraModel
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Before

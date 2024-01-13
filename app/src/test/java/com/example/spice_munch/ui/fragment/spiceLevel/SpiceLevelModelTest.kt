@@ -1,6 +1,5 @@
 package com.example.spice_munch.ui.fragment.spiceLevel
 
-import com.example.spice_munch.data.model.SpiceLevelModel
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test

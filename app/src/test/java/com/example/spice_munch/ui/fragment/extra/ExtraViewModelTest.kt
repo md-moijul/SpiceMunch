@@ -2,7 +2,6 @@ package com.example.spice_munch.ui.fragment.extra
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
-import com.example.spice_munch.data.model.ExtraModel
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
