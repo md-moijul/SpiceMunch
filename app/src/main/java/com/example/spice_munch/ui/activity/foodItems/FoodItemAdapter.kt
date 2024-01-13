@@ -26,7 +26,7 @@ class FoodItemAdapter(private val items: List<FoodItem>) : BaseAdapter() {
 
         val item = getItem(position) as FoodItem
         binding.textViewFoodName.text = item.name
-        binding.textViewFoodPrice.text = "${item.price} $"
+        binding.textViewFoodPrice.text = "£${item.price}"
 
         return binding.root
     }

@@ -26,7 +26,7 @@ class SummaryAdapter(private var items: List<OrderItem>) : BaseAdapter() {
         val item = getItem(position) as OrderItem
         binding.textViewAmount.text = item.amount.toString()
         binding.textViewFoodName.text = item.name
-        binding.textViewFoodPrice.text = String.format("Price: $%.2f", item.price * item.amount)
+        binding.textViewFoodPrice.text = String.format("Price: £%.2f", item.price * item.amount)
 
         return binding.root
     }

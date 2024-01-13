@@ -5,7 +5,7 @@
 
     <!-- Define your custom colors here -->
     <color name="buttonBackground">#FF6200EE</color>
-    <color name="primaryButton">#0000FF</color>
+    <color name="primaryButton">#AEC6CF</color>
     <color name="secondaryButton">#FF00FFEE</color>
     <color name="buttonText">#FFFFFFFF</color>
     <color name="buttonBorder">#FF000000</color>

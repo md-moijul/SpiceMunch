@@ -3,9 +3,19 @@ package com.example.spice_munch.ui.activity.summary
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
+import com.example.spice_munch.R
 import com.example.spice_munch.data.model.OrderManager
 import com.example.spice_munch.databinding.ActivitySummaryBinding
+import com.example.spice_munch.databinding.DialogPaymentBinding
 import com.example.spice_munch.ui.activity.modification.ModificationActivity
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import java.io.Serializable
 
 class SummaryActivity : AppCompatActivity() {
@@ -18,6 +28,11 @@ class SummaryActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setupListView()
+        updateTotalPrice()
+
+        binding.payButton.setOnClickListener {
+            showPaymentDialog()
+        }
     }
 
     private fun setupListView() {
@@ -32,17 +47,33 @@ class SummaryActivity : AppCompatActivity() {
             }
             startActivity(intent)
         }
-
-
     }
 
-
+    private fun updateTotalPrice() {
+        val totalPrice = OrderManager.orderItems.sumOf { it.price * it.amount }
+        binding.totalPriceTextView.text = "Total Price: £%.2f".format(totalPrice)
+    }
 
     override fun onResume() {
         super.onResume()
-        // Refresh the list in case OrderManager.orderItems has changed
+        // Refresh the list and total price in case OrderManager.orderItems has changed
         (binding.listViewSummary.adapter as? SummaryAdapter)?.updateItems(OrderManager.orderItems)
+        updateTotalPrice()
     }
+
+    private fun showPaymentDialog() {
+        val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_payment, null, false)
+        val dialogBinding = DialogPaymentBinding.bind(dialogView)
+
+        val totalPrice = OrderManager.orderItems.sumOf { it.price * it.amount }
+        dialogBinding.textViewTotalPrice.text = "Total Price: £%.2f".format(totalPrice)
+
+        AlertDialog.Builder(this)
+            .setTitle("Pay Online")
+            .setView(dialogView)
+            .setPositiveButton("Confirm") { dialog, _ -> dialog.dismiss() }
+            .setNegativeButton("Cancel") { dialog, _ -> dialog.dismiss() }
+            .show()
+    }
+
 }
-
-
