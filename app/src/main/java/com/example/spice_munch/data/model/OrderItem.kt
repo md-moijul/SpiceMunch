@@ -1,5 +1,7 @@
 package com.example.spice_munch.data.model
 
+import java.io.Serializable
+
 data class OrderItem(
     val name: String,
     val option: Option,
@@ -8,7 +10,7 @@ data class OrderItem(
     val spiceLevel: String,
     val amount: Double,
     val price: Double
-)
+): Serializable
 
 
 data class Order(

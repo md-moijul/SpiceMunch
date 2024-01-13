@@ -17,4 +17,5 @@ class FoodViewModel : ViewModel() {
         FoodItem("Nan", "Bread", 2.99)
     )
 
+
 }

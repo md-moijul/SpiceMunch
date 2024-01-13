@@ -72,5 +72,9 @@ class OrderSharedViewModel : ViewModel() {
         }
     }
 
+    fun setOrderItem(orderItem: OrderItem) {
+        _orderItem.value = orderItem
+    }
+
 
 }

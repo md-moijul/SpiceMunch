@@ -6,6 +6,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.spice_munch.R
 import com.example.spice_munch.data.model.FoodItem
+import com.example.spice_munch.data.model.OrderItem
 import com.example.spice_munch.data.model.OrderManager
 import com.example.spice_munch.databinding.ActivityModificationBinding
 import com.example.spice_munch.ui.activity.foodItems.FoodViewModel
@@ -25,42 +26,43 @@ class ModificationActivity : AppCompatActivity() {
         binding = ActivityModificationBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Extract the selected food item from the Intent
-        val selectedFoodItem = intent.getSerializableExtra("selected_item") as FoodItem
-        selectedFoodItem?.let {
-            sharedViewModel.initializeOrderItemWithSelectedFoodItem(it)
-        }
+        // Check if an existing OrderItem is passed
+        val existingOrderItem = intent.getSerializableExtra("selected_order_item") as? OrderItem
 
-        // Use binding to set the text
-        binding.selectedItemTextView.text = selectedFoodItem.name
-
-        if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-
-                .add(R.id.OptionFragment_container, OptionFragment())
-
-                .add(R.id.SpiceLevelFragment_container, SpiceLevelFragment())
-
-                .add(R.id.ExtraFragment_container, ExtraFragment())
-
-                .add(R.id.allergiesFragment_container, AllergiesFragment())
-
-                .add(R.id.amountFragment_container, AmountFragment())
-
-                .commit()
-        }
-
-
-        // Use binding for all view references
-        binding.addItemButton.setOnClickListener {
-            sharedViewModel.orderItem.value?.let { currentOrderItem ->
-                OrderManager.addOrderItem(currentOrderItem)
-                Log.d("ModificationActivity", "Order Item Added: ${OrderManager.orderItems}")
-                finish() // Close the activity after adding the item
+        if (existingOrderItem != null) {
+            // Use existing OrderItem
+            sharedViewModel.setOrderItem(existingOrderItem)
+        } else {
+            // Extract the selected food item from the Intent and create a new OrderItem
+            val selectedFoodItem = intent.getSerializableExtra("selected_item") as? FoodItem
+            selectedFoodItem?.let {
+                sharedViewModel.initializeOrderItemWithSelectedFoodItem(it)
+                binding.selectedItemTextView.text = it.name
             }
         }
 
+        setupFragments()
+        setupAddItemButton()
     }
 
+    private fun setupFragments() {
+        if (supportFragmentManager.fragments.isEmpty()) {
+            supportFragmentManager.beginTransaction()
+                .add(R.id.OptionFragment_container, OptionFragment())
+                .add(R.id.SpiceLevelFragment_container, SpiceLevelFragment())
+                .add(R.id.ExtraFragment_container, ExtraFragment())
+                .add(R.id.allergiesFragment_container, AllergiesFragment())
+                .add(R.id.amountFragment_container, AmountFragment())
+                .commit()
+        }
+    }
 
+    private fun setupAddItemButton() {
+        binding.addItemButton.setOnClickListener {
+            sharedViewModel.orderItem.value?.let { currentOrderItem ->
+                OrderManager.addOrUpdateOrderItem(currentOrderItem)
+                finish() // Close the activity after updating the item
+            }
+        }
+    }
 }

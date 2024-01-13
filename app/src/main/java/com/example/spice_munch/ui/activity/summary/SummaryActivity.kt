@@ -1,18 +1,12 @@
 package com.example.spice_munch.ui.activity.summary
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import androidx.activity.viewModels
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.spice_munch.R
-import com.example.spice_munch.data.model.OrderItem
 import com.example.spice_munch.data.model.OrderManager
 import com.example.spice_munch.databinding.ActivitySummaryBinding
-import com.example.spice_munch.ui.activity.foodItems.FoodItemAdapter
-import com.example.spice_munch.ui.activity.foodItems.FoodViewModel
+import com.example.spice_munch.ui.activity.modification.ModificationActivity
+import java.io.Serializable
 
 class SummaryActivity : AppCompatActivity() {
 
@@ -29,7 +23,20 @@ class SummaryActivity : AppCompatActivity() {
     private fun setupListView() {
         val adapter = SummaryAdapter(OrderManager.orderItems)
         binding.listViewSummary.adapter = adapter
+
+        binding.listViewSummary.setOnItemClickListener { _, _, position, _ ->
+            OrderManager.startEditingItem(position)
+            val selectedOrderItem = OrderManager.orderItems[position]
+            val intent = Intent(this, ModificationActivity::class.java).apply {
+                putExtra("selected_order_item", selectedOrderItem as Serializable)
+            }
+            startActivity(intent)
+        }
+
+
     }
+
+
 
     override fun onResume() {
         super.onResume()
