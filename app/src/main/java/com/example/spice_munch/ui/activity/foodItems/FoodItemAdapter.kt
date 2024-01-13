@@ -7,6 +7,7 @@ import android.widget.BaseAdapter
 import android.widget.TextView
 import com.example.spice_munch.R
 import com.example.spice_munch.data.model.FoodItem
+import com.example.spice_munch.databinding.ListItemFoodBinding
 
 class FoodItemAdapter(private val items: List<FoodItem>) : BaseAdapter() {
 
@@ -17,15 +18,16 @@ class FoodItemAdapter(private val items: List<FoodItem>) : BaseAdapter() {
     override fun getItemId(position: Int): Long = position.toLong()
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        val view: View = convertView ?: LayoutInflater.from(parent?.context).inflate(R.layout.list_item_food, parent, false)
-
-        val foodNameTextView: TextView = view.findViewById(R.id.textViewFoodName)
-        val foodPriceTextView: TextView = view.findViewById(R.id.textViewFoodPrice)
+        val binding: ListItemFoodBinding = if (convertView == null) {
+            ListItemFoodBinding.inflate(LayoutInflater.from(parent?.context), parent, false)
+        } else {
+            ListItemFoodBinding.bind(convertView)
+        }
 
         val item = getItem(position) as FoodItem
-        foodNameTextView.text = item.name
-        foodPriceTextView.text = "${item.price} $"
+        binding.textViewFoodName.text = item.name
+        binding.textViewFoodPrice.text = "${item.price} $"
 
-        return view
+        return binding.root
     }
 }

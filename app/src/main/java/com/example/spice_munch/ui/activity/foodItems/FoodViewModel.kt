@@ -8,9 +8,6 @@ import com.example.spice_munch.data.model.OrderItem
 
 class FoodViewModel : ViewModel() {
 
-    private val _orderItems = MutableLiveData<List<OrderItem>>(emptyList())
-    val orderItems: LiveData<List<OrderItem>> = _orderItems
-
 
     val items = listOf(
         FoodItem("Masala", "Curry", 9.99),
@@ -20,9 +17,4 @@ class FoodViewModel : ViewModel() {
         FoodItem("Nan", "Bread", 2.99)
     )
 
-    fun addOrderItem(orderItem: OrderItem) {
-        val updatedOrderItems = _orderItems.value.orEmpty() + orderItem
-        _orderItems.value = updatedOrderItems
-
-    }
 }

@@ -3,6 +3,7 @@ package com.example.spice_munch.ui.activity.foodItems
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ListView
@@ -11,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.spice_munch.R
 import com.example.spice_munch.databinding.ActivityFoodBinding
 import com.example.spice_munch.ui.activity.modification.ModificationActivity
+import com.example.spice_munch.ui.activity.summary.SummaryActivity
 
 class FoodActivity : AppCompatActivity() {
 
@@ -41,6 +43,13 @@ class FoodActivity : AppCompatActivity() {
                 // Pass the selected FoodItem to the ModificationActivity
                 putExtra("selected_item", selectedFoodItem)
             }
+            startActivity(intent)
+        }
+
+
+        val viewSummaryButton = findViewById<Button>(R.id.viewSummeryButton)
+        viewSummaryButton.setOnClickListener {
+            val intent = Intent(this, SummaryActivity::class.java)
             startActivity(intent)
         }
     }

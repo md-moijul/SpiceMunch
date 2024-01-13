@@ -6,6 +6,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.spice_munch.R
 import com.example.spice_munch.data.model.FoodItem
+import com.example.spice_munch.data.model.OrderManager
 import com.example.spice_munch.databinding.ActivityModificationBinding
 import com.example.spice_munch.ui.activity.foodItems.FoodViewModel
 import com.example.spice_munch.ui.fragment.allergies.AllergiesFragment
@@ -18,7 +19,6 @@ class ModificationActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityModificationBinding
     private val sharedViewModel: OrderSharedViewModel by viewModels()
-    private val foodViewModel: FoodViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,11 +54,9 @@ class ModificationActivity : AppCompatActivity() {
         // Use binding for all view references
         binding.addItemButton.setOnClickListener {
             sharedViewModel.orderItem.value?.let { currentOrderItem ->
-                foodViewModel.addOrderItem(currentOrderItem)
-                // Optionally, clear or reset the sharedViewModel's OrderItem here
-                // Log the current OrderItem
-                Log.d("ModificationActivity", "Order Item Added: $currentOrderItem")
-                finish()
+                OrderManager.addOrderItem(currentOrderItem)
+                Log.d("ModificationActivity", "Order Item Added: ${OrderManager.orderItems}")
+                finish() // Close the activity after adding the item
             }
         }
 
